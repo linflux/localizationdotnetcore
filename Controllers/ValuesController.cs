@@ -26,10 +26,6 @@ namespace Localization.StarterWeb.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            int ticks = (int)(DateTime.UtcNow.Ticks - new DateTime(2016, 01, 01).Ticks);
-            int nano = ticks > 0 ? ticks : ticks * (-1);
-
-
             var message = _localizer["Your application description page."];
             var contact = _localizer["Your contact page."];
 
@@ -43,11 +39,8 @@ namespace Localization.StarterWeb.Controllers
 
             var requestCulture = HttpContext.Features.Get<IRequestCultureFeature>();
 
-
             var obj = new
             {
-                Key = nano.ToString(),
-
                 MessageToString = message.ToString(),
                 Msg = message,
                 Contact = contact,
